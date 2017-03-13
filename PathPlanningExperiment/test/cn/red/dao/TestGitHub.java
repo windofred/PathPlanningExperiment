@@ -5,5 +5,7 @@ public class TestGitHub {
 		
 		System.out.println("第一次测试...");
 		
+		System.out.println("第二次测试...");
+		
 	}
 }
