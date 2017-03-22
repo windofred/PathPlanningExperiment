@@ -1,4 +1,4 @@
-package cn.red.dao;
+package cn.red.utils;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTools {
-
 	public static Connection getConnection() throws Exception {
 		Properties properties = new Properties();
 		InputStream inStream = JDBCTools.class.getClassLoader()
@@ -28,7 +27,8 @@ public class JDBCTools {
 		// 3. 调用
 		// DriverManager.getConnection(jdbcUrl, user, password)
 		// 获取数据库连接
-		Connection connection = DriverManager.getConnection(jdbcUrl, user, password);
+		Connection connection = DriverManager.getConnection(jdbcUrl, user,
+				password);
 		return connection;
 	}
 
@@ -59,5 +59,4 @@ public class JDBCTools {
 			}
 		}
 	}
-
 }
