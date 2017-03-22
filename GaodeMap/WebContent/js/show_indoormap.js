@@ -8,7 +8,7 @@ var map = new Indoor.Map('mapDiv', {
 	// 建筑物id
 	buildingId : 'B001C80TAL',
 	floorControl : true,
-	routeControl : false,// 取消室内路径规划的功能
+	routeControl : true,// 取消室内路径规划的功能
 	highlightFeatrueClick : true
 
 });

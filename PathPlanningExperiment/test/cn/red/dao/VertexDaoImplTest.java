@@ -15,5 +15,7 @@ public class VertexDaoImplTest {
 		
 		System.out.println();
 	}
+	
+
 
 }
