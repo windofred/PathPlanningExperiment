@@ -1,34 +1,48 @@
 package cn.red.domain;
 
+import java.util.List;
+
+import cn.red.undirectional.Vertex;
+
 public class User {
 
-	private Integer id;
+	private String id;
 	private String name;
+	
+	private List<Vertex> vertexs;
+	
+	public void setVertexs(List<Vertex> vertexs) {
+		this.vertexs = vertexs;
+	}
+	
+	public List<Vertex> getVertexs() {
+		return vertexs;
+	}
 
-	private String retention;//用户在某节点的停留时间
-	private double grade;//用户对于某节点的评分
+	private int retention;//用户在某节点的停留时间
+	private float grade;//用户对于某节点的评分
 
-	public String getRetention() {
+	public int getRetention() {
 		return retention;
 	}
 
-	public void setRetention(String retention) {
+	public void setRetention(int retention) {
 		this.retention = retention;
 	}
 
-	public double getGrade() {
+	public float getGrade() {
 		return grade;
 	}
 
-	public void setGrade(double grade) {
+	public void setGrade(float grade) {
 		this.grade = grade;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

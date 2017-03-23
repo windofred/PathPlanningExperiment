@@ -1,5 +1,7 @@
 package cn.red.undirectional;
 
+import java.util.List;
+
 import cn.red.domain.User;
 
 public class Vertex {
@@ -7,14 +9,14 @@ public class Vertex {
 	private String id;
 	private String name;
 
-	private User user;
+	private List<User> users;
 
-	public User getUser() {
-		return user;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public Vertex() {
@@ -69,7 +71,7 @@ public class Vertex {
 
 	@Override
 	public String toString() {
-		return "Vertex [id=" + id + ", name=" + name + "]";
+		return "Vertex [id=" + id + ", name=" + name + ", users=" + users + "]";
 	}
 
 }
