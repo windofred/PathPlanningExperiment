@@ -42,8 +42,10 @@ public class DijkstraAlgorithm {
 	private void findMinimalDistances(Vertex node) {
 		List<Vertex> adjacentNodes = getNeighbors(node);
 		for (Vertex target : adjacentNodes) {
-			if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
-				distance.put(target, getShortestDistance(node) + getDistance(node, target));
+			if (getShortestDistance(target) > getShortestDistance(node)
+					+ getDistance(node, target)) {
+				distance.put(target,
+						getShortestDistance(node) + getDistance(node, target));
 				predecessors.put(target, node);
 				unSettledNodes.add(target);
 			}
@@ -51,9 +53,36 @@ public class DijkstraAlgorithm {
 
 	}
 
+	//新增的方法，用于返回起点到某点的最小权值
+	public void findMinimalDistances2(Vertex node) {
+		
+		//获得当前节点的相邻节点
+		List<Vertex> adjacentNodes = getNeighbors(node);
+		for (Vertex target : adjacentNodes) {
+			if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
+				distance.put(target,getShortestDistance(node) + getDistance(node, target));
+				predecessors.put(target, node);
+				unSettledNodes.add(target);
+			}
+		}
+		
+	}
+
 	private int getDistance(Vertex node, Vertex target) {
 		for (Edge edge : edges) {
-			if (edge.getSource().equals(node) && edge.getDestination().equals(target)) {
+			if (edge.getSource().equals(node)
+					&& edge.getDestination().equals(target)) {
+				return edge.getWeight();
+			}
+		}
+		throw new RuntimeException("Should not happen");
+	}
+	
+	//自己新增的方法：用于返回两点之间的权值
+	public int getDistance2(Vertex node, Vertex target) {
+		for (Edge edge : edges) {
+			if (edge.getSource().equals(node)
+					&& edge.getDestination().equals(target)) {
 				return edge.getWeight();
 			}
 		}
@@ -63,7 +92,8 @@ public class DijkstraAlgorithm {
 	private List<Vertex> getNeighbors(Vertex node) {
 		List<Vertex> neighbors = new ArrayList<Vertex>();
 		for (Edge edge : edges) {
-			if (edge.getSource().equals(node) && !isSettled(edge.getDestination())) {
+			if (edge.getSource().equals(node)
+					&& !isSettled(edge.getDestination())) {
 				neighbors.add(edge.getDestination());
 			}
 		}

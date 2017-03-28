@@ -14,11 +14,11 @@ public class QuickSort {
 		int pivotKey = arr[left];
 		
 		while(left < right) {
-			while(left<right && pivotKey>=arr[right]) {
+			while(left<right && pivotKey<=arr[right]) {
 				right--;
 			}
 			arr[left] = arr[right];//把小的移动到左边
-			while(left<right && pivotKey<=arr[left]) {
+			while(left<right && pivotKey>=arr[left]) {
 				left++;
 			}
 			arr[right] = arr[left];//把打的移动到右边
