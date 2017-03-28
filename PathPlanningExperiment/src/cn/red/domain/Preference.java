@@ -2,8 +2,8 @@ package cn.red.domain;
 
 public class Preference {
 	private Integer id;
-	private String userId;// 用户id
-	private String vertexId;// 节点id
+	private int userId;// 用户id
+	private int vertexId;// 节点id
 	private float grade;// 用户评分
 	private int retention;// 用户停留时间
 
@@ -15,19 +15,19 @@ public class Preference {
 		this.id = id;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	public String getVertexId() {
+	public int getVertexId() {
 		return vertexId;
 	}
 
-	public void setVertexId(String vertexId) {
+	public void setVertexId(int vertexId) {
 		this.vertexId = vertexId;
 	}
 

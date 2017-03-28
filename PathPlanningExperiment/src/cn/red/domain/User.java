@@ -6,7 +6,7 @@ import cn.red.undirectional.Vertex;
 
 public class User {
 
-	private String id;
+	private int id;
 	private String name;
 	
 	private List<Vertex> vertexs;
@@ -38,11 +38,11 @@ public class User {
 		this.grade = grade;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

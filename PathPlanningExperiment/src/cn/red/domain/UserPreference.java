@@ -41,8 +41,8 @@ public class UserPreference {
 			Preference = new Preference();
 
 			int id = resultSet.getInt("id");
-			String userId = resultSet.getString("user_id");
-			String vertexId = resultSet.getString("vertex_id");
+			int userId = resultSet.getInt("user_id");
+			int vertexId = resultSet.getInt("vertex_id");
 			float grade = resultSet.getFloat("grade");
 			int retention = resultSet.getInt("retention");
 
@@ -71,7 +71,8 @@ public class UserPreference {
 		for(int i=0; i<K; i++) {
 			mostPreferenceList.add(preferencesList.get(i));
 		}
-
+		
+		System.out.println("用户偏好点：");
 		//遍历mostPreferenceList
 		for(Preference p : mostPreferenceList) {
 			System.out.println(p);
