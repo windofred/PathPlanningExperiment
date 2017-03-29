@@ -9,14 +9,6 @@ import cn.red.dao.VertexDao;
 
 public class CreateGraph {
 	
-	@Test
-	public void test() throws Exception {
-		List<Vertex> vertexList = CreateGraph.getVertexList();
-		List<Edge> edgeList = CreateGraph.getEdgeList();
-		System.out.println(vertexList.size());
-		System.out.println(edgeList.size());
-	}
-	
 	private static List<Vertex> nodes = new ArrayList<Vertex>();
 	private static List<Edge> edges = new ArrayList<Edge>();
 	
@@ -25,6 +17,7 @@ public class CreateGraph {
 		nodes = VertexDao.readVertexInfo();
 		return nodes;
 	}
+	
 	//获得边的集合
 	public static List<Edge> getEdgeList() {
 		// 为无向图添加边(权值是固定的)
@@ -74,7 +67,9 @@ public class CreateGraph {
 		addLane("Edge_109", 10, 9, 18);
 		
 		return edges;
+		
 	}
+	
 	//添加边
 	private static void addLane(String laneId, int sourceLocNo, int destLocNo, int duration) {
 		Edge lane = new Edge(laneId, nodes.get(sourceLocNo), nodes.get(destLocNo), duration);
