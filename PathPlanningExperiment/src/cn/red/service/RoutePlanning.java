@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.junit.Test;
 
 import cn.red.domain.Preference;
 import cn.red.domain.UserPreference;
-import cn.red.enumeration.RouteLength;
 import cn.red.sort.QuickSort;
 import cn.red.undirectional.CreateGraph;
 import cn.red.undirectional.DijkstraAlgorithm;
@@ -155,7 +153,7 @@ public class RoutePlanning {
 	 * 1.路径复杂度、路径长度、拥挤长度
 	 */
 	public static void routeByWeight() {
-
+		
 	}
 
 	// 读取用户的输入：路径复杂度、路径长度、拥挤程度
@@ -181,5 +179,13 @@ public class RoutePlanning {
 		return inputInfo;
 
 	}
+	
+	//计算路径复杂度的影响因子
+	
+	
+	//计算路径长度的影响因子
+	
+	//计算拥挤程度的影响因子
+	
 
 }
