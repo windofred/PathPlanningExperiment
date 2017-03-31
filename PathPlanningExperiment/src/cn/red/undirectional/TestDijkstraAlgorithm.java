@@ -1,5 +1,7 @@
 package cn.red.undirectional;
 
+import cn.red.service.RoutePlanning;
+
 
 /**
  * 
@@ -11,7 +13,7 @@ package cn.red.undirectional;
 public class TestDijkstraAlgorithm {
 	
 	public static void main(String[] args) throws Exception {
-		
+		RoutePlanning.routeByDistance();
 	}
 
 }

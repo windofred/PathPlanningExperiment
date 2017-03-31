@@ -45,6 +45,9 @@ public class VertexDao {
 			
 		}
 		
+		//关闭资源
+		JDBCTools.releaseDB(resultSet, preparedStatement, connection);
+		
 		return vertexList;
 		
 	}

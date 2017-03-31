@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.junit.Test;
 
 import cn.red.domain.Preference;
 import cn.red.domain.UserPreference;
@@ -156,7 +157,7 @@ public class RoutePlanning {
 		
 	}
 
-	// 读取用户的输入：路径复杂度、路径长度、拥挤程度
+	// 读取用户的输入并返回：路径复杂度、路径长度、拥挤程度
 	public static List<String> readInfoByUser() {
 
 		Scanner scanner = new Scanner(System.in);
@@ -185,7 +186,69 @@ public class RoutePlanning {
 	
 	//计算路径长度的影响因子
 	
-	//计算拥挤程度的影响因子
 	
+	@Test
+	public void test() {
+		double c = RoutePlanning.computeCongestion();
+		System.out.println(c);
+	}
+	
+	//计算拥挤程度的影响因子
+	//1.获取用户的输入偏好信息
+	//2.根据偏好程度计算相应的影响值
+	public static double computeCongestion() {
+		
+//		List<String> list = readInfoByUser();
+//		String congestion = list.get(2);
+		
+		//定义相关的参数值
+		double velocity = 0.0;//行人的平均速度
+		final double commonVelocity = 1.4;//行人正常速度(m/s)
+		//假设已知人流量大小
+		double p = 3.0;//假设人流量大小为3.0(单位面积上的人数)
+		
+		double c = 0.0;//拥堵情况影响因子
+		
+		//人流范围->速度大小/平均速度->影响大小
+		//根据人流量大小，计算行人的通行速度
+		if(0<p && p<=0.75) {
+			velocity = 1.4;
+			c = velocity/commonVelocity;
+			System.out.println("对应的拥挤程度为正常...");
+		}else if(0.75<p && p<=2) {
+			velocity = 1.24;
+			c = velocity/commonVelocity;
+			System.out.println("对应的拥挤程度为轻度...");
+		}else if(2<p && p<=3.5) {
+			velocity = 0.69;
+			c = velocity/commonVelocity;
+			System.out.println("对应的拥挤程度为中度...");
+		}else if(p>3.5) {
+			velocity = 0.15;
+			c = velocity/commonVelocity;
+			System.out.println("对应的拥挤程度为重度...");
+		}
+		
+		//返回影响因子c
+		return c;
+		
+		//根据行人的通行速度，计算其影响值c
+		
+		
+		//模拟用户的输入，来判断其偏好具体信息
+//		if(RouteCongestion.NORMAL.getName().equalsIgnoreCase(congestion)) {
+//			System.out.println("用户的偏好为正常...");
+//		}
+//		if(RouteCongestion.SLIGHT.getName().equalsIgnoreCase(congestion)) {
+//			System.out.println("用户的偏好为轻度...");
+//		}
+//		if(RouteCongestion.MEDIUM.getName().equalsIgnoreCase(congestion)) {
+//			System.out.println("用户的偏好为中度...");
+//		}
+//		if(RouteCongestion.SEVERE.getName().equalsIgnoreCase(congestion)) {
+//			System.out.println("用户的偏好为重度...");
+//		}
+		
+	}
 
 }
