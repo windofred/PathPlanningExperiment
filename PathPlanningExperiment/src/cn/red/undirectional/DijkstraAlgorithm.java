@@ -16,7 +16,7 @@ public class DijkstraAlgorithm {
 	private Set<Vertex> settledNodes;
 	private Set<Vertex> unSettledNodes;
 	private Map<Vertex, Vertex> predecessors;
-	private Map<Vertex, Integer> distance;
+	private Map<Vertex, Double> distance;
 
 	public DijkstraAlgorithm(Graph graph) {
 		// create a copy of the array so that we can operate on this array
@@ -27,9 +27,9 @@ public class DijkstraAlgorithm {
 	public void execute(Vertex source) {
 		settledNodes = new HashSet<Vertex>();
 		unSettledNodes = new HashSet<Vertex>();
-		distance = new HashMap<Vertex, Integer>();
+		distance = new HashMap<Vertex, Double>();
 		predecessors = new HashMap<Vertex, Vertex>();
-		distance.put(source, 0);
+		distance.put(source, 0.0);
 		unSettledNodes.add(source);
 		while (unSettledNodes.size() > 0) {
 			Vertex node = getMinimum(unSettledNodes);
@@ -42,10 +42,8 @@ public class DijkstraAlgorithm {
 	private void findMinimalDistances(Vertex node) {
 		List<Vertex> adjacentNodes = getNeighbors(node);
 		for (Vertex target : adjacentNodes) {
-			if (getShortestDistance(target) > getShortestDistance(node)
-					+ getDistance(node, target)) {
-				distance.put(target,
-						getShortestDistance(node) + getDistance(node, target));
+			if (getShortestDistance(target) > getShortestDistance(node)+ getDistance(node, target)) {
+				distance.put(target, getShortestDistance(node) + getDistance(node, target));
 				predecessors.put(target, node);
 				unSettledNodes.add(target);
 			}
@@ -68,7 +66,7 @@ public class DijkstraAlgorithm {
 		
 	}
 
-	private int getDistance(Vertex node, Vertex target) {
+	private double getDistance(Vertex node, Vertex target) {
 		for (Edge edge : edges) {
 			if (edge.getSource().equals(node)
 					&& edge.getDestination().equals(target)) {
@@ -79,7 +77,7 @@ public class DijkstraAlgorithm {
 	}
 	
 	//自己新增的方法：用于返回两点之间的权值
-	public int getDistance2(Vertex node, Vertex target) {
+	public double getDistance2(Vertex node, Vertex target) {
 		for (Edge edge : edges) {
 			if (edge.getSource().equals(node)
 					&& edge.getDestination().equals(target)) {
@@ -92,8 +90,7 @@ public class DijkstraAlgorithm {
 	private List<Vertex> getNeighbors(Vertex node) {
 		List<Vertex> neighbors = new ArrayList<Vertex>();
 		for (Edge edge : edges) {
-			if (edge.getSource().equals(node)
-					&& !isSettled(edge.getDestination())) {
+			if (edge.getSource().equals(node) && !isSettled(edge.getDestination())) {
 				neighbors.add(edge.getDestination());
 			}
 		}
@@ -118,10 +115,10 @@ public class DijkstraAlgorithm {
 		return settledNodes.contains(vertex);
 	}
 
-	private int getShortestDistance(Vertex destination) {
-		Integer d = distance.get(destination);
+	private double getShortestDistance(Vertex destination) {
+		Double d = distance.get(destination);
 		if (d == null) {
-			return Integer.MAX_VALUE;
+			return Double.POSITIVE_INFINITY;
 		} else {
 			return d;
 		}

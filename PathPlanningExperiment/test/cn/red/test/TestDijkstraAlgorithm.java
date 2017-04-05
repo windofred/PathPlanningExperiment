@@ -1,4 +1,4 @@
-package cn.red.undirectional;
+package cn.red.test;
 
 import cn.red.service.RoutePlanning;
 
@@ -13,7 +13,8 @@ import cn.red.service.RoutePlanning;
 public class TestDijkstraAlgorithm {
 	
 	public static void main(String[] args) throws Exception {
-		RoutePlanning.routeByDistance();
+		//根据 距离 和 人流量大小 来计算最优路径
+		RoutePlanning.routeByDistanceAndCongestion();
 	}
 
 }

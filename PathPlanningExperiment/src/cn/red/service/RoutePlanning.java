@@ -29,22 +29,22 @@ public class RoutePlanning {
 	private static List<String> inputInfo = new ArrayList<String>();
 
 	/**
-	 * 1.根据用户的停留时间和评分两个标准，为用户推荐3个偏好点 2.将3个偏好点作为中间点或终点,并将偏好点距离用户当前位置的长度作排序
-	 * 3.规划一条遍历用户偏好点的一条路径长度最短路径
+	 * 1.根据用户的停留时间和评分两个标准，为用户推荐K(K=3)个偏好点 
+	 * 2.将3个偏好点作为中间点或终点,并将偏好点距离用户当前位置的长度作排序
+	 * 3.规划一条遍历用户偏好点的一条权值最小的最短路径
 	 * 
 	 * @throws Exception
 	 */
-	public static void routeByDistance() throws Exception {
+	public static void routeByDistanceAndCongestion() throws Exception {
 
-		nodes = CreateGraph.getVertexList();
-		edges = CreateGraph.getEdgeList();
+		nodes = CreateGraph.getVertexList();//获得节点集
+		edges = CreateGraph.getEdgeList();//获得边集
 
 		// Lets check from location Loc_1 to Loc_10
 		Graph graph = new Graph(nodes, edges);// 创建图
 		DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
 		// 获得用户1偏好的前K(K=3)个节点
-		List<Preference> mostPreferenceList = UserPreference
-				.recommandPreferences();
+		List<Preference> mostPreferenceList = UserPreference.recommandPreferences();
 		int vertex1_id = mostPreferenceList.get(0).getVertexId();
 		int vertex2_id = mostPreferenceList.get(1).getVertexId();
 		int vertex3_id = mostPreferenceList.get(2).getVertexId();
@@ -197,9 +197,6 @@ public class RoutePlanning {
 	//1.获取用户的输入偏好信息
 	//2.根据偏好程度计算相应的影响值
 	public static double computeCongestion() {
-		
-//		List<String> list = readInfoByUser();
-//		String congestion = list.get(2);
 		
 		//定义相关的参数值
 		double velocity = 0.0;//行人的平均速度

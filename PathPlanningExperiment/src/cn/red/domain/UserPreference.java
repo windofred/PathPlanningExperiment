@@ -54,16 +54,7 @@ public class UserPreference {
 
 			preferencesList.add(Preference);
 
-			/*
-			 * System.out.println("用户id: " + userId + " 节点id: " + vertexId +
-			 * " 评分：" + grade + " 停留时间：" + retention);
-			 */
 		}
-
-		// 遍历PreferencesList
-//		for (Preference u : preferencesList) {
-//			System.out.println(u);
-//		}
 		
 		System.out.println();
 		
@@ -78,19 +69,7 @@ public class UserPreference {
 			System.out.println(p);
 		}
 		
-		// 打印PreferencesList的大小
-		// System.out.println(PreferencesList.size());
-
-		// 获得用户的评分和用户的停留时间
-//		int grade_length = preferencesList.size();
-//		float[] grades = new float[grade_length];
-//		int[] retentions = new int[grade_length];
-//
-//		for (int i = 0; i < grade_length; i++) {
-//			grades[i] = preferencesList.get(i).getGrade();
-//			retentions[i] = preferencesList.get(i).getRetention();
-//		}
-
+		//关闭数据库连接资源
 		JDBCTools.releaseDB(resultSet, preparedStatement, connection);
 	
 		return mostPreferenceList;

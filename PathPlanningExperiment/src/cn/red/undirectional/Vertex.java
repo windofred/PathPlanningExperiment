@@ -1,23 +1,9 @@
 package cn.red.undirectional;
 
-import java.util.List;
-
-import cn.red.domain.User;
-
 public class Vertex {
 
 	private int id;
 	private String name;
-
-	// private List<User> users;
-
-	// public List<User> getUsers() {
-	// return users;
-	// }
-	//
-	// public void setUsers(List<User> users) {
-	// this.users = users;
-	// }
 
 	public Vertex() {
 

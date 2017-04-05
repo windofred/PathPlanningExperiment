@@ -16,16 +16,15 @@ public class VertexDao {
 	private static PreparedStatement preparedStatement = null;
 	private static ResultSet resultSet = null;
 
-	//节点集合
 	private static List<Vertex> vertexList = null;
-	//返回节点集合
+	
 	public static List<Vertex> readVertexInfo() throws Exception {
-		// 获取数据库的连接
+		//获取数据库的连接
 		connection = JDBCTools.getConnection();
-		// 查询节点表
+		//查询节点表
 		String sql = "select * from vertex";
 		preparedStatement = connection.prepareStatement(sql);
-		// 获取结果集
+		//获取结果集
 		resultSet = preparedStatement.executeQuery();
 		
 		Vertex vertex = null;
@@ -45,7 +44,7 @@ public class VertexDao {
 			
 		}
 		
-		//关闭资源
+		//关闭数据库连接资源
 		JDBCTools.releaseDB(resultSet, preparedStatement, connection);
 		
 		return vertexList;

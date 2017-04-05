@@ -15,10 +15,8 @@ public class EdgeDao {
 	private static PreparedStatement preparedStatement = null;
 	private static ResultSet resultSet = null;
 	
-	//边集
 	private static List<Edge> edgeList = null;
 	
-	//获取边的集合
 	public static List<Edge> readEdgeInfo() throws Exception {
 		//获取数据库的连接
 		connection = JDBCTools.getConnection();
@@ -36,22 +34,23 @@ public class EdgeDao {
 			int edgeId = resultSet.getInt("edgeId");
 			int startVertexId = resultSet.getInt("startVertexId");
 			int endVertexId = resultSet.getInt("endVertexId");
-			int weight = resultSet.getInt("weight");
+			int length = resultSet.getInt("length");
 			double density = resultSet.getDouble("density");
 			
 			edge.setId(edgeId);
 			edge.setStartVertexId(startVertexId);
 			edge.setEndVertexId(endVertexId);
-			edge.setWeight(weight);
+			edge.setLength(length);
 			edge.setDensity(density);
 			
 			edgeList.add(edge);
 		}
 		
 		//关闭数据库连接资源
-		//JDBCTools.releaseDB(resultSet, preparedStatement, connection);
+		JDBCTools.releaseDB(resultSet, preparedStatement, connection);
 		
 		return edgeList;
+		
 	}
 	
 }
